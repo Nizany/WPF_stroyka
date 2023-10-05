@@ -1,28 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
-namespace WPF_стройка
+namespace YourNamespace
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BuildingAction_Click(object sender, RoutedEventArgs e)
+        {
+            // Обработка действия "Работа со строениями"
+            // Добавьте код для работы с данными о строениях
+        }
+
+        private void GroupAction_Click(object sender, RoutedEventArgs e)
+        {
+            // Обработка действия "Работа с группами строений"
+            // Добавьте код для работы с данными о группах строений
+        }
+
+        private void CompanyAction_Click(object sender, RoutedEventArgs e)
+        {
+            // Обработка действия "Работа с компаниями"
+            // Добавьте код для работы с данными о компаниях
+        }
+
+        private void DisplayAction_Click(object sender, RoutedEventArgs e)
+        {
+            // Обработка действия "Вывести список"
+            // Добавьте код для отображения списков строений, компаний и групп строений
+        }
+
+        private void ExitAction_Click(object sender, RoutedEventArgs e)
+        {
+            // Обработка действия "Выйти из программы"
+            Close();
         }
     }
 }
