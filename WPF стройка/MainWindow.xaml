@@ -20,7 +20,7 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-
+    
     <Grid>
         <!-- Заголовок -->
         <TextBlock Text="Выберите действие:" FontSize="16" FontWeight="Bold" Margin="10" />
@@ -39,4 +39,5 @@
             <!-- Содержимое будет добавлено динамически в зависимости от выбранного действия -->
         </Border>
     </Grid>
+    
 </Window>
