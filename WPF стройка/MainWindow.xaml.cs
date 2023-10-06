@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace YourNamespace
 {
@@ -256,27 +258,41 @@ namespace YourNamespace
 
         private void BuildingAction_Click(object sender, RoutedEventArgs e)
         {
-            OutputTextBox.Text += "Выберите действие:\n";
-            OutputTextBox.Text += "1. Добавить строение.\n";
-            OutputTextBox.Text += "2. Удалить строение.\n";
+
         }
 
         private void GroupAction_Click(object sender, RoutedEventArgs e)
         {
-            // Обработка действия "Работа с группами строений"
-            // Добавьте код для работы с данными о группах строений
+
         }
 
         private void CompanyAction_Click(object sender, RoutedEventArgs e)
         {
-            // Обработка действия "Работа с компаниями"
-            // Добавьте код для работы с данными о компаниях
+
         }
 
         private void DisplayAction_Click(object sender, RoutedEventArgs e)
         {
-            // Обработка действия "Вывести список"
-            // Добавьте код для отображения списков строений, компаний и групп строений
+
+        }
+        private void ChooseAction_Click(object sender, RoutedEventArgs e)
+        {
+            if (Buildings.IsChecked == true)
+            {
+                Text.Text = "Выбрано: Строения";
+            }
+            else if (GroupBuildings.IsChecked == true)
+            {
+                Text.Text = "Выбрано: Группы строений";
+            }
+            else if (Companies.IsChecked == true)
+            {
+                Text.Text = "Выбрано: Компании";
+            }
+            else if (List.IsChecked == true)
+            {
+                Text.Text = "Выбрано: Список";
+            }
         }
 
         private void ExitAction_Click(object sender, RoutedEventArgs e)

@@ -3,41 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Building Management App" Width="800" Height="600">
     <Window.Resources>
-        <!-- Стиль для кнопок -->
-        <Style x:Key="ActionButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="150" />
-            <Setter Property="Height" Value="40" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="Background" Value="#007ACC" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#005EAA" />
-                </Trigger>
-            </Style.Triggers>
+        <Style x:Key="ActionButtonStyle" TargetType="RadioButton">
+            <!-- Здесь определите стиль для RadioButton -->
         </Style>
     </Window.Resources>
-    
-    <Grid>
-        <!-- Заголовок -->
-        <TextBlock Text="Выберите действие:" FontSize="16" FontWeight="Bold" Margin="10" />
-
-        <!-- Меню действий -->
-        <StackPanel Orientation="Vertical" Margin="10">
-            <Button Content="Работа со строениями" Style="{StaticResource ActionButtonStyle}" Click="BuildingAction_Click" />
-            <Button Content="Работа с группами строений" Style="{StaticResource ActionButtonStyle}" Click="GroupAction_Click" />
-            <Button Content="Работа с компаниями" Style="{StaticResource ActionButtonStyle}" Click="CompanyAction_Click" />
-            <Button Content="Вывести список" Style="{StaticResource ActionButtonStyle}" Click="DisplayAction_Click" />
-            <Button Content="Выйти из программы" Style="{StaticResource ActionButtonStyle}" Click="ExitAction_Click" />
-        </StackPanel>
-
-        <!-- Контейнер для контента действия -->
-        <Border Name="ContentContainer" Grid.Row="1" Margin="10">
-            <!-- Содержимое будет добавлено динамически в зависимости от выбранного действия -->
-        </Border>
-    </Grid>
-    
+    <StackPanel Orientation="Vertical" Margin="10">
+        <RadioButton x:Name="Buildings" Content="Работа со строениями" Click="BuildingAction_Click" Margin="0,100,0,0" />
+        <RadioButton x:Name="GroupBuildings" Content="Работа с группами строений" Click="GroupAction_Click" Margin="0,20,0,0" />
+        <RadioButton x:Name="Companies" Content="Работа с компаниями" Click="CompanyAction_Click" Margin="0,20,0,0" />
+        <RadioButton x:Name="List" Content="Вывести список"  Click="DisplayAction_Click" Margin="0,20,0,0" />
+        <Button Content="Выбрать"  Click="ChooseAction_Click" Height="50.96" Margin="0,20,0,0" />
+        <TextBlock x:Name="Text" TextWrapping="Wrap" Height="20"><Run Text=" "/><LineBreak/><Run/></TextBlock>
+        <Button Content="Выйти из программы"  Click="ExitAction_Click" Height="50" VerticalContentAlignment="Center" Margin="0,180,0,0" />
+    </StackPanel>
 </Window>
