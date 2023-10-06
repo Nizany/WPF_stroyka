@@ -12,8 +12,56 @@
         <RadioButton x:Name="GroupBuildings" Content="Работа с группами строений" Click="GroupAction_Click" Margin="0,20,0,0" />
         <RadioButton x:Name="Companies" Content="Работа с компаниями" Click="CompanyAction_Click" Margin="0,20,0,0" />
         <RadioButton x:Name="List" Content="Вывести список"  Click="DisplayAction_Click" Margin="0,20,0,0" />
-        <Button Content="Выбрать"  Click="ChooseAction_Click" Height="50.96" Margin="0,20,0,0" />
-        <TextBlock x:Name="Text" TextWrapping="Wrap" Height="20"><Run Text=" "/><LineBreak/><Run/></TextBlock>
-        <Button Content="Выйти из программы"  Click="ExitAction_Click" Height="50" VerticalContentAlignment="Center" Margin="0,180,0,0" />
+        <Button Content="Выбрать"  Click="ChooseAction_Click" Height="50.96" Margin="0,20,0,0">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#FF259044"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Padding" Value="20, 10"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#005E9C"/>
+                            <!-- Задаем цвет фона при наведении курсора -->
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBlock x:Name="Text" TextWrapping="Wrap"><Run Text=" "/><LineBreak/><Run/></TextBlock>
+        <Button Content="Выйти из программы"  Click="ExitAction_Click" Height="50" VerticalContentAlignment="Center" Margin="0,150,0,0">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#FF259044"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Padding" Value="20, 10"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#005E9C"/>
+                            <!-- Задаем цвет фона при наведении курсора -->
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </StackPanel>
 </Window>

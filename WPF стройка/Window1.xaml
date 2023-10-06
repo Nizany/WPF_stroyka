@@ -13,14 +13,10 @@
             </Button.Effect>
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="Background" Value="#007ACC"/>
-                    <!-- Задаем цвет фона кнопки -->
+                    <Setter Property="Background" Value="#FF259044"/>
                     <Setter Property="Foreground" Value="White"/>
-                    <!-- Задаем цвет текста на кнопке -->
                     <Setter Property="BorderThickness" Value="0"/>
-                    <!-- Убираем границу кнопки -->
                     <Setter Property="Padding" Value="20, 10"/>
-                    <!-- Задаем отступы внутри кнопки -->
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
@@ -39,7 +35,5 @@
                 </Style>
             </Button.Style>
         </Button>
-
-
     </Grid>
 </Window>
