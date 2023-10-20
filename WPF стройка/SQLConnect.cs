@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace WPF_стройка
 {
@@ -9,7 +11,6 @@ namespace WPF_стройка
         public SqlConnect()
         {
         }
-
         private static SqlConnection CreateConnection()
         {
             var connectionString = Data.Connect_Data;
@@ -18,12 +19,41 @@ namespace WPF_стройка
             return connection;
         }
 
+        public static void RegisterUser(string Login, string Password)
+        {
+            using (var connection = CreateConnection())
+            {
+                try
+                {
+                    // Получить количество записей в таблице Авторизация
+                    var sqlQuery1 = "SELECT COUNT(ID) FROM Авторизация";
+                    var countCommand = new SqlCommand(sqlQuery1, connection);
+                    int count = (int)countCommand.ExecuteScalar();
+
+                    // Вставить новую запись
+                    var sqlQuery2 = "INSERT INTO Авторизация (ID, Login, Password) VALUES (@ID, @Login, @Password)";
+                    var insertCommand = new SqlCommand(sqlQuery2, connection);
+
+                    // Используйте параметры, чтобы избежать SQL-инъекции
+                    insertCommand.Parameters.AddWithValue("@ID", count + 1);
+                    insertCommand.Parameters.AddWithValue("@Login", Login);
+                    insertCommand.Parameters.AddWithValue("@Password", Password);
+
+                    insertCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ошибка: " + ex.Message);
+                    // Обработка ошибки, если что-то пошло не так
+                }
+            }
+        }
 
 
         public static List<Buildings> BuildingsData()
         {
-            var result = new List<Buildings>();
             var connection = CreateConnection();
+            var result = new List<Buildings>();
             const string query = "SELECT * FROM Строения";
             using (var command = new SqlCommand(query, connection))
             {

@@ -13,6 +13,8 @@ namespace WPF_стройка
         public Login_Window()
         {
             InitializeComponent();
+            this.ResizeMode = ResizeMode.NoResize;
+            this.SizeToContent = SizeToContent.WidthAndHeight;
         }
         private string ConvertToUnsecureString(SecureString securePassword)
         {
@@ -52,15 +54,12 @@ namespace WPF_стройка
             {
                 WrongText.Visibility = Visibility.Visible;
             }
-
         }
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-        private void LoginBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-
+            var window = new Registration_Window();
+            window.Show();
+            Close();
         }
     }
 }
