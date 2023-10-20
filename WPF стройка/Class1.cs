@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
-namespace Class_Stroenia
+
+namespace WPF_стройка
 {
     public class Entity
     {
@@ -248,7 +249,7 @@ namespace Class_Stroenia
     }
     class Program
     {
-        static void Main(string[] args)
+        static void main(string[] args)
         {
             BuildingGroupStorage groups = new BuildingGroupStorage();
             BuildingStorage storage = new BuildingStorage();
