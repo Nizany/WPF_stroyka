@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Windows;
 
 namespace WPF_стройка
 {
@@ -76,6 +75,54 @@ namespace WPF_стройка
             connection.Close();
             return result;
         }
+        public static List<BuildingsGroup> BuildingsGroupData()
+        {
+            var connection = CreateConnection();
+            var result = new List<BuildingsGroup>();
+            const string query = "SELECT * FROM [Группы строений]";
+            using (var command = new SqlCommand(query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var data = new BuildingsGroup
+                        {
+                            Id = reader["ID"].ToString(),
+                            Name = reader["Название"].ToString(),
+                            NumberOfBuildings = reader["Кол-во строений"].ToString(),
+                        };
+                        result.Add(data);
+                    }
+                }
+            }
+            connection.Close();
+            return result;
+        }
+        public static List<Companies> CompaniesData()
+        {
+            var connection = CreateConnection();
+            var result = new List<Companies>();
+            const string query = "SELECT * FROM Компании";
+            using (var command = new SqlCommand(query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var data = new Companies
+                        {
+                            Id = reader["ID"].ToString(),
+                            Name = reader["Название"].ToString(),
+                            Location = reader["Местоположение"].ToString(),
+                        };
+                        result.Add(data);
+                    }
+                }
+            }
+            connection.Close();
+            return result;
+        }
         public static List<UserData> UserDatas(string tableName, string columnName, string valueToFind)
         {
             var connection = CreateConnection();
@@ -109,9 +156,21 @@ namespace WPF_стройка
         public string Height { get; set; }
         public string IsResidential { get; set; }
     }
+    public class BuildingsGroup
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string NumberOfBuildings { get; set; }
+    }
+    public class Companies
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Location { get; set; }
+    }
     public class UserData
     {
-        public string Login{ get; set; }
+        public string Login { get; set; }
         public string Password { get; set; }
     }
 }

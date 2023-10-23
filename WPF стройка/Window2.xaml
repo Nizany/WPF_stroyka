@@ -16,17 +16,20 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Padding" Value="10,5"/>
             <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="Blue"/>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Foreground" Value="Red" />
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Foreground" Value="Black" />
                 </Trigger>
             </Style.Triggers>
         </Style>
     </Window.Resources>
     <Grid>
-        <RadioButton x:Name="ListBuildings" Content="Список строений" Click="BuildingAction_Click" Style="{StaticResource RadioButtonStyle}" Margin="10,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <RadioButton x:Name="ListBuildings" Content="Список строений" Click="BuildingAction_Click" Style="{StaticResource RadioButtonStyle}" Margin="10,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="False" />
         <RadioButton x:Name="ListGroupBuildings" Content="Список групп строений" Click="GroupAction_Click" Style="{StaticResource RadioButtonStyle}" Margin="10,50,0,0" VerticalAlignment="Top" Height="18" />
         <RadioButton x:Name="ListCompanies" Content="Список компаний" Click="CompanyAction_Click" Style="{StaticResource RadioButtonStyle}" Margin="10,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <RadioButton x:Name="Back" Content="Назад"  Click="Back_Click" Style="{StaticResource RadioButtonStyle}" Margin="10,110,0,0" VerticalAlignment="Top" />
+        <RadioButton x:Name="Back" Content="Назад"  Click="Back_Click" Style="{StaticResource RadioButtonStyle}" Margin="10,110,0,0" VerticalAlignment="Top" IsChecked="False" />
         <Button Content="Выбрать"  Click="ChooseAction_Click"  Margin="0,160,0,0" Height="51" VerticalAlignment="Top">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
@@ -56,11 +59,11 @@
         <ListView Name="MyListView" Height="200" VerticalAlignment="Bottom">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Column1}" />
-                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Column2}" />
-                    <GridViewColumn Header="Кол-во этажей" DisplayMemberBinding="{Binding Column3}" />
-                    <GridViewColumn Header="Высота" DisplayMemberBinding="{Binding Column4}" />
-                    <GridViewColumn Header="Жилой" DisplayMemberBinding="{Binding Column5}" />
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Кол-во этажей" DisplayMemberBinding="{Binding Floors}" />
+                    <GridViewColumn Header="Высота" DisplayMemberBinding="{Binding Height}" />
+                    <GridViewColumn Header="Жилой" DisplayMemberBinding="{Binding IsResidential}" />
                 </GridView>
             </ListView.View>
         </ListView>

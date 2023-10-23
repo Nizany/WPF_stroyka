@@ -26,14 +26,17 @@ namespace WPF_стройка
 
         private void DisplayAction_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void ChooseAction_Click(object sender, RoutedEventArgs e)
         {
-            Window2 window = new Window2();
-            window.Show();
-            Close();
+            if (List.IsChecked == true)
+            {
+                Window2 window = new Window2();
+                window.Show();
+                Close();
+            }
         }
 
         private void ExitAction_Click(object sender, RoutedEventArgs e)

@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Windows;
+using System.Windows.Input;
 
 namespace WPF_стройка
 {
@@ -13,8 +14,8 @@ namespace WPF_стройка
         public Login_Window()
         {
             InitializeComponent();
-            this.ResizeMode = ResizeMode.NoResize;
-            this.SizeToContent = SizeToContent.WidthAndHeight;
+            ResizeMode = ResizeMode.NoResize;
+            SizeToContent = SizeToContent.WidthAndHeight;
         }
         private string ConvertToUnsecureString(SecureString securePassword)
         {
@@ -29,7 +30,21 @@ namespace WPF_стройка
                 Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
             }
         }
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Enter_Click(sender, e);
+            }
+        }
 
+        private void PasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Enter_Click(sender, e);
+            }
+        }
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
             var securePassword = PassBox.SecurePassword;
