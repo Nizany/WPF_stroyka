@@ -9,13 +9,15 @@ namespace WPF_стройка
     /// <summary>
     /// Логика взаимодействия для Window1.xaml
     /// </summary>
-    public partial class Login_Window : Window
+    public partial class LoginWindow : Window
     {
-        public Login_Window()
+        public static string AutorizedLogin;
+        public LoginWindow()
         {
             InitializeComponent();
             ResizeMode = ResizeMode.NoResize;
             SizeToContent = SizeToContent.WidthAndHeight;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
         private string ConvertToUnsecureString(SecureString securePassword)
         {
@@ -37,7 +39,6 @@ namespace WPF_стройка
                 Enter_Click(sender, e);
             }
         }
-
         private void PasswordBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -45,6 +46,8 @@ namespace WPF_стройка
                 Enter_Click(sender, e);
             }
         }
+
+
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
             var securePassword = PassBox.SecurePassword;
@@ -61,6 +64,8 @@ namespace WPF_стройка
                     window.Show();
                     Close();
                     authenticationSuccessful = true;
+                    AutorizedLogin = loginInserted;
+                    Data.CurrentLogin = loginInserted;
                     break;
                 }
             }

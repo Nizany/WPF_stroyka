@@ -9,6 +9,9 @@
 //------------------------------------------------------------------------------
 
 namespace WPF_стройка.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
     /// </summary>
@@ -54,6 +57,16 @@ namespace WPF_стройка.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
+        /// </summary>
+        internal static System.Drawing.Icon home_icon_icons_com_73532 {
+            get {
+                object obj = ResourceManager.GetObject("home_icon_icons_com_73532", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

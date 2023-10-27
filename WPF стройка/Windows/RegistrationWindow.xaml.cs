@@ -16,6 +16,7 @@ namespace WPF_стройка
             InitializeComponent();
             ResizeMode = ResizeMode.NoResize;
             SizeToContent = SizeToContent.WidthAndHeight;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
         private string ConvertToUnsecureString(SecureString securePassword)
         {
@@ -66,5 +67,11 @@ namespace WPF_стройка
             }
         }
 
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new LoginWindow();
+            window.Show();
+            Close();
+        }
     }
 }

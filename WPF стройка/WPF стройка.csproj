@@ -34,9 +34,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,22 +59,116 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Class1.cs" />
-    <Compile Include="RegistrationWindow.xaml.cs">
+    <Compile Include="Pages\Buildings\UpdateBuildingPage.xaml.cs">
+      <DependentUpon>UpdateBuildingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Buildings\AddBuildingPage.xaml.cs">
+      <DependentUpon>AddBuildingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Buildings\BuildingsActionsPage.xaml.cs">
+      <DependentUpon>BuildingsActionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Companies\AddGroupBuildingPage.xaml.cs">
+      <DependentUpon>AddGroupBuildingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Companies\CompaniesActionsPage.xaml.cs">
+      <DependentUpon>CompaniesActionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Companies\RemoveCompanyPage.xaml.cs">
+      <DependentUpon>RemoveCompanyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Companies\UpdateComapnyPage.xaml.cs">
+      <DependentUpon>UpdateComapnyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GroupBuildings\AddGroupBuildingPage.xaml.cs">
+      <DependentUpon>AddGroupBuildingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GroupBuildings\GroupBuildingsActionsPage.xaml.cs">
+      <DependentUpon>GroupBuildingsActionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GroupBuildings\RemoveGroupBuildingPage.xaml.cs">
+      <DependentUpon>RemoveGroupBuildingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GroupBuildings\UpdateGroupBuildingPage.xaml.cs">
+      <DependentUpon>UpdateGroupBuildingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Buildings\RemoveBuildingPage.xaml.cs">
+      <DependentUpon>RemoveBuildingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SQLConnect.cs" />
-    <Compile Include="Login_window.xaml.cs">
-      <DependentUpon>Login_window.xaml</DependentUpon>
+    <Compile Include="Classes\SQLConnect.cs" />
+    <Compile Include="Windows\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window2.xaml.cs">
-      <DependentUpon>Window2.xaml</DependentUpon>
-    </Compile>
-    <Page Include="RegistrationWindow.xaml">
+    <Page Include="Pages\Buildings\UpdateBuildingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Pages\Buildings\AddBuildingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Buildings\BuildingsActionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Companies\AddGroupBuildingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Companies\CompaniesActionsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Companies\RemoveCompanyPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Companies\UpdateComapnyPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\GroupBuildings\AddGroupBuildingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\GroupBuildings\GroupBuildingsActionsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\GroupBuildings\RemoveGroupBuildingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\GroupBuildings\UpdateGroupBuildingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Buildings\RemoveBuildingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\RegistrationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -78,15 +176,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Login_window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window2.xaml">
+    <Page Include="Windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,8 +202,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="LoginData.cs" />
+    <Compile Include="Classes\LoginData.cs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -117,6 +212,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UserIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
