@@ -18,8 +18,7 @@ namespace WPF_стройка.Pages
         private void ChooseAction_Click(object sender, RoutedEventArgs e)
         {
             var name = Name.Text;
-            var BuildingsGroupData = SqlConnect.BuildingsGroupData();
-            if (BuildingsGroupData.Any(item => item.Name == name))
+            if (SqlConnect.BuildingsGroupData().Any(item => item.Name == name))
             {
                 SqlConnect.RemoveGroupBuildings(name);
                 Error.Text = "Группа строений удалена";
@@ -32,9 +31,7 @@ namespace WPF_стройка.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new GroupBuildingsActionsPage();
-            var window = Window.GetWindow(this);
-            window.Content = Page;
+            Window.GetWindow(this).Content = new GroupBuildingsActionsPage();
         }
     }
 }

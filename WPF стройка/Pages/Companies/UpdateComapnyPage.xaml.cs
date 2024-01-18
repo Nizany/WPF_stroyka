@@ -45,9 +45,7 @@ namespace WPF_стройка.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new CompaniesActionsPage();
-            var window = Window.GetWindow(this);
-            window.Content = Page;
+            Window.GetWindow(this).Content = new CompaniesActionsPage();
         }
 
         private void Find_Click(object sender, RoutedEventArgs e)
@@ -58,8 +56,7 @@ namespace WPF_стройка.Pages
             }
             else
             {
-                var Companies = SqlConnect.CompaniesData();
-                var Company = Companies.FirstOrDefault(b => b.Name == Name.Text);
+                var Company = SqlConnect.CompaniesData().FirstOrDefault(b => b.Name == Name.Text);
                 if (Company != null)
                 {
                     Error.Text = string.Empty;

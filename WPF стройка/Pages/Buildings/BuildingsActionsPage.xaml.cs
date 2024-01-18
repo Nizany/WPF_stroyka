@@ -18,27 +18,19 @@ namespace WPF_стройка.Windows
         {
             if (AddBuilding.IsChecked == true)
             {
-                var Page = new AddBuildingPage();
-                var window = Window.GetWindow(this);
-                window.Content = Page;
+                Window.GetWindow(this).Content = new AddBuildingPage();
             }
             if (RemoveBuilding.IsChecked == true)
             {
-                var Page = new RemoveBuildingPage();
-                var window = Window.GetWindow(this);
-                window.Content = Page;
+                Window.GetWindow(this).Content = new RemoveBuildingPage();
             }
             if (UpdateBuilding.IsChecked == true)
             {
-                var Page = new UpdateBuildingPage();
-                var window = Window.GetWindow(this);
-                window.Content = Page;
+                Window.GetWindow(this).Content = new UpdateBuildingPage();
             }
             if (Back.IsChecked == true)
             {
-                var Page = new MainPage();
-                var window = Window.GetWindow(this);
-                window.Content = Page;
+                Window.GetWindow(this).Content = new MainPage();
             }
         }
     }

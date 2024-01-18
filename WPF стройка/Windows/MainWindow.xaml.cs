@@ -9,8 +9,7 @@ namespace WPF_стройка
         public MainWindow()
         {
             InitializeComponent();
-            Page mainPage = new MainPage();
-            Content = mainPage;
+            Content = new MainPage();
             ResizeMode = ResizeMode.NoResize;
             SizeToContent = SizeToContent.WidthAndHeight;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;

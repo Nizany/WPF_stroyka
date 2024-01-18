@@ -31,8 +31,7 @@ namespace WPF_стройка.Pages
                 Error.Text = ("Количество групп строений должно быть положительным целым числом.");
                 return;
             }
-            var BuildData = SqlConnect.BuildingsGroupData();
-            if (BuildData.Any(item => item.Name == name))
+            if (SqlConnect.BuildingsGroupData().Any(item => item.Name == name))
             {
                 Error.Text = ("Такая группа строений уже существует!");
             }
@@ -45,9 +44,7 @@ namespace WPF_стройка.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new GroupBuildingsActionsPage();
-            var window = Window.GetWindow(this);
-            window.Content = Page;
+            Window.GetWindow(this).Content = new GroupBuildingsActionsPage();
         }
     }
 }

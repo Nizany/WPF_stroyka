@@ -32,9 +32,7 @@ namespace WPF_стройка.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new CompaniesActionsPage();
-            var window = Window.GetWindow(this);
-            window.Content = Page;
+            Window.GetWindow(this).Content = new CompaniesActionsPage();
         }
     }
 }

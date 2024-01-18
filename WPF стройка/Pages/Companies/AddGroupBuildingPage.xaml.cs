@@ -25,7 +25,6 @@ namespace WPF_стройка.Pages
                 return;
             }
 
-            var location = Location.Text;
             var CompanyData = SqlConnect.CompaniesData();
             if (CompanyData.Any(item => item.Name == name))
             {
@@ -33,16 +32,14 @@ namespace WPF_стройка.Pages
             }
             else
             {
-                SqlConnect.AddCompany(name, location);
+                SqlConnect.AddCompany(name, Location.Text);
                 Error.Text = "Компания добавлена";
             }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new CompaniesActionsPage();
-            var window = Window.GetWindow(this);
-            window.Content = Page;
+            Window.GetWindow(this).Content = new CompaniesActionsPage();
         }
     }
 }

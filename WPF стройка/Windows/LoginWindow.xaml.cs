@@ -50,18 +50,14 @@ namespace WPF_стройка
 
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
-            var securePassword = PassBox.SecurePassword;
-            var passwordInserted = ConvertToUnsecureString(securePassword);
             var loginInserted = LoginBox.Text;
-            var LoginData = SqlConnect.UserDatas("Авторизация", "Login", loginInserted);
             bool authenticationSuccessful = false;
 
-            foreach (var item in LoginData)
+            foreach (var item in SqlConnect.UserDatas("Авторизация", "Login", loginInserted))
             {
-                if (item.Login == loginInserted && item.Password == passwordInserted)
+                if (item.Login == loginInserted && item.Password == ConvertToUnsecureString(PassBox.SecurePassword))
                 {
-                    var window = new MainWindow();
-                    window.Show();
+                    new MainWindow().Show();
                     Close();
                     authenticationSuccessful = true;
                     AutorizedLogin = loginInserted;
@@ -77,8 +73,7 @@ namespace WPF_стройка
         }
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
-            var window = new Registration_Window();
-            window.Show();
+            new Registration_Window().Show();
             Close();
         }
     }

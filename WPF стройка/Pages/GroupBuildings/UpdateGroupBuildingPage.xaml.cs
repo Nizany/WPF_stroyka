@@ -6,9 +6,6 @@ using WPF_стройка.Windows;
 
 namespace WPF_стройка.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для AddBuildingPage.xaml
-    /// </summary>
     public partial class UpdateGroupBuildingPage : Page
     {
         public UpdateGroupBuildingPage()
@@ -24,7 +21,6 @@ namespace WPF_стройка.Pages
                 Error.Text = ("Название группы строений должно состоять только из букв, цифр и пробелов.");
                 return;
             }
-
             var buildings = Buildings.Text;
             if (!Regex.IsMatch(buildings, @"^\d+$"))
             {
@@ -41,7 +37,6 @@ namespace WPF_стройка.Pages
                 SqlConnect.AddGroupBuilding(name, int.Parse(buildings));
                 Error.Text = "Группа строений добавлена";
             }
-            var GroupBuildData = SqlConnect.BuildingsGroupData();
             if (BuildingGroupData.Any(item => item.Name == name))
             {
                 SqlConnect.UpdateGroupBuildings(name, int.Parse(buildings));
@@ -55,9 +50,7 @@ namespace WPF_стройка.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new GroupBuildingsActionsPage();
-            var window = Window.GetWindow(this);
-            window.Content = Page;
+            Window.GetWindow(this).Content = new GroupBuildingsActionsPage();
         }
 
         private void Find_Click(object sender, RoutedEventArgs e)
@@ -68,8 +61,7 @@ namespace WPF_стройка.Pages
             }
             else
             {
-                var buildingsGroup = SqlConnect.BuildingsGroupData();
-                var buildingGroup = buildingsGroup.FirstOrDefault(b => b.Name == Name.Text);
+                var buildingGroup = SqlConnect.BuildingsGroupData().FirstOrDefault(b => b.Name == Name.Text);
                 if (buildingGroup != null)
                 {
                     Error.Text = string.Empty;

@@ -26,18 +26,14 @@ namespace WPF_стройка.Windows
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            MainPage mainPage = new MainPage();
-            Window window = Window.GetWindow(this);
-            window.Content = mainPage;
+            Window.GetWindow(this).Content = new MainPage();
         }
 
         private void CompanyAction_Click(object sender, RoutedEventArgs e)
         {
             MyListView.View = new GridView();
-            var data = SqlConnect.CompaniesData();
-            MyListView.ItemsSource = data;
+            MyListView.ItemsSource = SqlConnect.CompaniesData();
 
-            // Добавляем столбцы, которые хотим отобразить
             AddColumn("ID", "Id");
             AddColumn("Название", "Name");
             AddColumn("Местоположение", "Location");
@@ -46,10 +42,8 @@ namespace WPF_стройка.Windows
         private void GroupAction_Click(object sender, RoutedEventArgs e)
         {
             MyListView.View = new GridView();
-            var data = SqlConnect.BuildingsGroupData();
-            MyListView.ItemsSource = data;
+            MyListView.ItemsSource = SqlConnect.BuildingsGroupData();
 
-            // Добавляем столбцы, которые хотим отобразить
             AddColumn("ID", "Id");
             AddColumn("Название", "Name");
             AddColumn("Кол-во строений", "NumberOfBuildings");
@@ -58,10 +52,8 @@ namespace WPF_стройка.Windows
         private void BuildingAction_Click(object sender, RoutedEventArgs e)
         {
             MyListView.View = new GridView();
-            var data = SqlConnect.BuildingsData();
-            MyListView.ItemsSource = data;
+            MyListView.ItemsSource = SqlConnect.BuildingsData();
 
-            // Добавляем столбцы, которые хотим отобразить
             AddColumn("ID", "Id");
             AddColumn("Название", "Name");
             AddColumn("Кол-во этажей", "Floors");

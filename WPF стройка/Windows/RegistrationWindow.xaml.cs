@@ -45,9 +45,7 @@ namespace WPF_стройка
             }
             else
             {
-                var LoginData = SqlConnect.UserDatas("Авторизация", "Login", loginInserted);
-
-                if (LoginData.Any(item => item.Login == loginInserted))
+                if (SqlConnect.UserDatas("Авторизация", "Login", loginInserted).Any(item => item.Login == loginInserted))
                 {
                     WrongText.Text = "Пользователь с таким логином уже существует";
                     WrongText.Visibility = Visibility.Visible;
@@ -55,8 +53,7 @@ namespace WPF_стройка
                 else if (passwordInserted1 == passwordInserted2)
                 {
                     SqlConnect.RegisterUser(loginInserted, passwordInserted2);
-                    var window = new MainWindow();
-                    window.Show();
+                    new MainWindow().Show();
                     Close();
                 }
                 else
@@ -69,8 +66,7 @@ namespace WPF_стройка
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            var window = new LoginWindow();
-            window.Show();
+            new LoginWindow().Show();
             Close();
         }
     }

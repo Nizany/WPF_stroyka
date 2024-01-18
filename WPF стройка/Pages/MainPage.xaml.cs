@@ -17,36 +17,26 @@ namespace WPF_стройка.Windows
         {
             if (Buildings.IsChecked == true)
             {
-                var window = Window.GetWindow(this);
-                var page = new BuildingsActionsPage();
-                window.Content = page;
+                Window.GetWindow(this).Content = new BuildingsActionsPage();
             }
             if (GroupBuildings.IsChecked == true)
             {
-                var window = Window.GetWindow(this);
-                var page = new GroupBuildingsActionsPage();
-                window.Content = page;
+                Window.GetWindow(this).Content = new GroupBuildingsActionsPage();
             }
             if (Companies.IsChecked == true)
             {
-                var window = Window.GetWindow(this);
-                var page = new CompaniesActionsPage();
-                window.Content = page;
+                Window.GetWindow(this).Content = new CompaniesActionsPage();
             }
             if (List.IsChecked == true)
             {
-                var window = Window.GetWindow(this);
-                var page = new ListPage();
-                window.Content = page;
+                Window.GetWindow(this).Content = new ListPage();
             }
         }
 
         private void ExitAction_Click(object sender, RoutedEventArgs e)
         {
-            var LoginWindow = new LoginWindow();
-            LoginWindow.Show();
-            var window = Window.GetWindow(this);
-            window.Close();
+            new LoginWindow().Show();
+            Window.GetWindow(this).Close();
         }
     }
 }

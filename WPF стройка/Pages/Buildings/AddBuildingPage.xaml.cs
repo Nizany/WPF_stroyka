@@ -48,8 +48,7 @@ namespace WPF_стройка.Pages
                     isResidential = 0;
                     break;
             }
-            var BuildData = SqlConnect.BuildingsData();
-            if (BuildData.Any(item => item.Name == name))
+            if (SqlConnect.BuildingsData().Any(item => item.Name == name))
             {
                 Error.Text = ("Такое строение уже существует!");
             }
@@ -62,9 +61,7 @@ namespace WPF_стройка.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new BuildingsActionsPage();
-            var window = Window.GetWindow(this);
-            window.Content = Page;
+            Window.GetWindow(this).Content = new BuildingsActionsPage();
         }
     }
 }

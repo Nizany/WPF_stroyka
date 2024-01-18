@@ -62,9 +62,7 @@ namespace WPF_стройка.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new BuildingsActionsPage();
-            var window = Window.GetWindow(this);
-            window.Content = Page;
+            Window.GetWindow(this).Content = new BuildingsActionsPage();
         }
 
         private void Find_Click(object sender, RoutedEventArgs e)
@@ -75,8 +73,7 @@ namespace WPF_стройка.Pages
             }
             else
             {
-                var buildings = SqlConnect.BuildingsData();
-                var building = buildings.FirstOrDefault(b => b.Name == Name.Text);
+                var building = SqlConnect.BuildingsData().FirstOrDefault(b => b.Name == Name.Text);
                 if (building != null)
                 {
                     Error.Text = string.Empty;

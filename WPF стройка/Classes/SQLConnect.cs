@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace WPF_стройка
@@ -7,13 +6,9 @@ namespace WPF_стройка
 
     public class SqlConnect
     {
-        public SqlConnect()
-        {
-        }
         private static SqlConnection CreateConnection()
         {
-            var connectionString = Data.Connect_Data;
-            var connection = new SqlConnection(connectionString);
+            var connection = new SqlConnection(Data.Connect_Data);
             connection.Open();
             return connection;
         }
@@ -23,15 +18,12 @@ namespace WPF_стройка
             using (var connection = CreateConnection())
             {
                 // Получить количество записей в таблице Авторизация
-                var sqlQuery1 = "SELECT COUNT(ID) FROM Авторизация";
-                var countCommand = new SqlCommand(sqlQuery1, connection);
+                var countCommand = new SqlCommand("SELECT COUNT(ID) FROM Авторизация", connection);
                 int count = (int)countCommand.ExecuteScalar();
 
                 // Вставить новую запись
-                var sqlQuery2 = "INSERT INTO Авторизация (ID, Login, Password) VALUES (@ID, @Login, @Password)";
-                var insertCommand = new SqlCommand(sqlQuery2, connection);
+                var insertCommand = new SqlCommand("INSERT INTO Авторизация (ID, Login, Password) VALUES (@ID, @Login, @Password)", connection);
 
-                // Используйте параметры, чтобы избежать SQL-инъекции
                 insertCommand.Parameters.AddWithValue("@ID", count + 1);
                 insertCommand.Parameters.AddWithValue("@Login", Login);
                 insertCommand.Parameters.AddWithValue("@Password", Password);
@@ -53,7 +45,6 @@ namespace WPF_стройка
                 var sqlQuery2 = "INSERT INTO Строения (ID_строения, Название, [Кол-во этажей], Высота, Жилой) VALUES (@ID_строения, @Название, @Кол_во_этажей, @Высота, @Жилой)";
                 var insertCommand = new SqlCommand(sqlQuery2, connection);
 
-                // Используйте параметры, чтобы избежать SQL-инъекции
                 insertCommand.Parameters.AddWithValue("@ID_строения", count + 1);
                 insertCommand.Parameters.AddWithValue("@Название", Name);
                 insertCommand.Parameters.AddWithValue("@Кол_во_этажей", Floors);
@@ -70,7 +61,6 @@ namespace WPF_стройка
                 var sqlQuery = "DELETE FROM Строения WHERE Название = @Название";
                 var insertCommand = new SqlCommand(sqlQuery, connection);
 
-                // Используйте параметры, чтобы избежать SQL-инъекции
                 insertCommand.Parameters.AddWithValue("@Название", Name);
 
                 insertCommand.ExecuteNonQuery();
@@ -117,7 +107,6 @@ namespace WPF_стройка
                 var sqlQuery = "DELETE FROM [Группы Строений] WHERE Название = @Название";
                 var insertCommand = new SqlCommand(sqlQuery, connection);
 
-                // Используйте параметры, чтобы избежать SQL-инъекции
                 insertCommand.Parameters.AddWithValue("@Название", Name);
 
                 insertCommand.ExecuteNonQuery();
@@ -162,7 +151,6 @@ namespace WPF_стройка
                 var sqlQuery = "DELETE FROM Компании WHERE Название = @Название";
                 var insertCommand = new SqlCommand(sqlQuery, connection);
 
-                // Используйте параметры, чтобы избежать SQL-инъекции
                 insertCommand.Parameters.AddWithValue("@Название", Name);
 
                 insertCommand.ExecuteNonQuery();
@@ -274,10 +262,8 @@ namespace WPF_стройка
                     var Password = (string)reader["Password"];
                     result.Add(new UserData { Login = Login, Password = Password });
                 }
-
                 connection.Close();
             }
-
             return result;
         }
     }
