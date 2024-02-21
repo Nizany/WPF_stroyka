@@ -17,11 +17,11 @@ namespace WPF_стройка
         {
             using (var connection = CreateConnection())
             {
-                // Получить количество записей в таблице Авторизация
+                // Получить количество записей в таблице Авторизация.
                 var countCommand = new SqlCommand("SELECT COUNT(ID) FROM Авторизация", connection);
                 int count = (int)countCommand.ExecuteScalar();
 
-                // Вставить новую запись
+                // Вставить новую запись.
                 var insertCommand = new SqlCommand("INSERT INTO Авторизация (ID, Login, Password) VALUES (@ID, @Login, @Password)", connection);
 
                 insertCommand.Parameters.AddWithValue("@ID", count + 1);
@@ -32,53 +32,52 @@ namespace WPF_стройка
             }
         }
 
-        public static void AddBuilding(string Name, int Floors, float Height, int isResedental)
+        private static void ExecuteNonQuery(string query, SqlConnection connection, params SqlParameter[] parameters)
+        {
+            var command = new SqlCommand(query, connection);
+            command.Parameters.AddRange(parameters);
+            command.ExecuteNonQuery();
+        }
+
+        private static int GetTableCount(string tableName, SqlConnection connection)
+        {
+            var sqlQuery = $"SELECT COUNT(ID) FROM {tableName}";
+            var countCommand = new SqlCommand(sqlQuery, connection);
+            return (int)countCommand.ExecuteScalar();
+        }
+
+        public static void AddBuilding(string Name, int Floors, float Height, int isResidential)
         {
             using (var connection = CreateConnection())
             {
-                // Получить количество записей в таблице Авторизация
-                var sqlQuery1 = "SELECT COUNT(ID_Строения) FROM Строения";
-                var countCommand = new SqlCommand(sqlQuery1, connection);
-                int count = (int)countCommand.ExecuteScalar();
+                var count = GetTableCount("Строения", connection);
 
-                // Вставить новую запись
-                var sqlQuery2 = "INSERT INTO Строения (ID_строения, Название, [Кол-во этажей], Высота, Жилой) VALUES (@ID_строения, @Название, @Кол_во_этажей, @Высота, @Жилой)";
-                var insertCommand = new SqlCommand(sqlQuery2, connection);
-
-                insertCommand.Parameters.AddWithValue("@ID_строения", count + 1);
-                insertCommand.Parameters.AddWithValue("@Название", Name);
-                insertCommand.Parameters.AddWithValue("@Кол_во_этажей", Floors);
-                insertCommand.Parameters.AddWithValue("@Высота", Height);
-                insertCommand.Parameters.AddWithValue("@Жилой", isResedental);
-
-                insertCommand.ExecuteNonQuery();
+                ExecuteNonQuery("INSERT INTO Строения (ID_строения, Название, [Кол-во этажей], Высота, Жилой) VALUES (@ID_строения, @Название, @Кол_во_этажей, @Высота, @Жилой)",
+                                connection,
+                                new SqlParameter("@ID_строения", count + 1),
+                                new SqlParameter("@Название", Name),
+                                new SqlParameter("@Кол_во_этажей", Floors),
+                                new SqlParameter("@Высота", Height),
+                                new SqlParameter("@Жилой", isResidential));
             }
         }
         public static void RemoveBuilding(string Name)
         {
             using (var connection = CreateConnection())
             {
-                var sqlQuery = "DELETE FROM Строения WHERE Название = @Название";
-                var insertCommand = new SqlCommand(sqlQuery, connection);
-
-                insertCommand.Parameters.AddWithValue("@Название", Name);
-
-                insertCommand.ExecuteNonQuery();
+                ExecuteNonQuery("DELETE FROM Строения WHERE Название = @Название", connection, new SqlParameter("@Название", Name));
             }
         }
-        public static void UpdateBuilding(string Name, int Floors, float Height, int isResedental)
+        public static void UpdateBuilding(string Name, int Floors, float Height, int isResidential)
         {
             using (var connection = CreateConnection())
             {
-                var sqlQuery2 = "UPDATE Строения SET [Кол-во этажей]=@Кол_во_этажей, Высота=@Высота, Жилой=@Жилой WHERE Название=@Название";
-                var insertCommand = new SqlCommand(sqlQuery2, connection);
-
-                insertCommand.Parameters.AddWithValue("@Название", Name);
-                insertCommand.Parameters.AddWithValue("@Кол_во_этажей", Floors);
-                insertCommand.Parameters.AddWithValue("@Высота", Height);
-                insertCommand.Parameters.AddWithValue("@Жилой", isResedental);
-
-                insertCommand.ExecuteNonQuery();
+                ExecuteNonQuery("UPDATE Строения SET [Кол-во этажей]=@Кол_во_этажей, Высота=@Высота, Жилой=@Жилой WHERE Название=@Название",
+                                connection,
+                                new SqlParameter("@Название", Name),
+                                new SqlParameter("@Кол_во_этажей", Floors),
+                                new SqlParameter("@Высота", Height),
+                                new SqlParameter("@Жилой", isResidential));
             }
         }
 
@@ -86,18 +85,13 @@ namespace WPF_стройка
         {
             using (var connection = CreateConnection())
             {
-                var sqlQuery1 = "SELECT COUNT(ID) FROM [Группы Строений]";
-                var countCommand = new SqlCommand(sqlQuery1, connection);
-                int count = (int)countCommand.ExecuteScalar();
+                var count = GetTableCount("Строения", connection);
 
-                var sqlQuery2 = "INSERT INTO [Группы строений] (ID, Название, [Кол-во строений]) VALUES (@ID, @Название, @Кол_во_строений)";
-                var insertCommand = new SqlCommand(sqlQuery2, connection);
-
-                insertCommand.Parameters.AddWithValue("@ID", count + 1);
-                insertCommand.Parameters.AddWithValue("@Название", Name);
-                insertCommand.Parameters.AddWithValue("@Кол_во_строений", buildings);
-
-                insertCommand.ExecuteNonQuery();
+                ExecuteNonQuery("INSERT INTO Строения (ID_группы_строений, Название, [Кол-во этажей], Высота, Жилой) VALUES (@ID_группы_строения, @Название, @Кол_во_этажей, @Высота, @Жилой)",
+                                connection,
+                                new SqlParameter("@ID_строения", count + 1),
+                                new SqlParameter("@Название", Name),
+                                new SqlParameter("@Кол_во_строений", buildings));
             }
         }
         public static void RemoveGroupBuildings(string Name)

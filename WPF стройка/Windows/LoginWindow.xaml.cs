@@ -61,7 +61,7 @@ namespace WPF_стройка
                     Close();
                     authenticationSuccessful = true;
                     AutorizedLogin = loginInserted;
-                    Data.CurrentLogin = loginInserted;
+                    //Data.CurrentLogin = loginInserted;
                     break;
                 }
             }
