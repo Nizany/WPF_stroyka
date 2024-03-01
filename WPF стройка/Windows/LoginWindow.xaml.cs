@@ -57,11 +57,10 @@ namespace WPF_стройка
             {
                 if (item.Login == loginInserted && item.Password == ConvertToUnsecureString(PassBox.SecurePassword))
                 {
+                    App.Login_Text = loginInserted;
                     new MainWindow().Show();
                     Close();
                     authenticationSuccessful = true;
-                    AutorizedLogin = loginInserted;
-                    //Data.CurrentLogin = loginInserted;
                     break;
                 }
             }

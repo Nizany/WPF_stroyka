@@ -2,10 +2,13 @@
 
 namespace WPF_стройка
 {
-    /// <summary>
-    /// Логика взаимодействия для App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        public static string Login_Text { get; set; }
+
+        public App()
+        {
+            Login_Text = "Login";
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace WPF_стройка
             InitializeComponent();
             Content = new MainPage();
             ResizeMode = ResizeMode.NoResize;
-            SizeToContent = SizeToContent.WidthAndHeight;
+            SizeToContent = SizeToContent.Height;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
     }
