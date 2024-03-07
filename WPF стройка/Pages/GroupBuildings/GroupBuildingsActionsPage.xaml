@@ -10,7 +10,7 @@
         <RadioButton x:Name="AddBuilding" Content="Добавить группу строений" Style="{StaticResource RadioButtonStyle}" Margin="10,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
         <RadioButton x:Name="RemoveBuilding" Content="Удалить группу строений" Style="{StaticResource RadioButtonStyle}" Margin="10,10,0,0" VerticalAlignment="Top" Height="18" />
         <RadioButton x:Name="UpdateBuilding" Content="Обновить группу строений" Style="{StaticResource RadioButtonStyle}" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <RadioButton x:Name="Back" Content="Назад" Style="{StaticResource RadioButtonStyle}" Margin="10,10,0,0" VerticalAlignment="Top" />
         <Button Content="Выбрать"  Click="ChooseAction_Click" Style="{StaticResource ButtonStyle}" Margin="0,50,0,0" Height="51" VerticalAlignment="Top"></Button>
+        <Button Content="Назад"  Click="Back_Click" Style="{StaticResource ButtonStyle}" Height="51" VerticalAlignment="Bottom" Margin="0,20,0,0"/>
     </StackPanel>
 </Page>

@@ -6,13 +6,17 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddGroupBuildingPage">
-    <StackPanel>
-        <TextBlock TextWrapping="Wrap" Text="Название" Margin="-240,50,0,0" HorizontalAlignment="Center"/>
-        <TextBox x:Name="Name" TextWrapping="Wrap" Text="" Width="300" Margin="0,10,0,0" Height="30" FontSize="20"/>
-        <TextBlock TextWrapping="Wrap" Text="Кол-во строений" Margin="-200,10,0,0" HorizontalAlignment="Center"/>
-        <TextBox x:Name="Buildings" TextWrapping="Wrap" Text="" Width="300" Margin="0,10,0,0" Height="30" FontSize="20"/>
-        <TextBlock x:Name="Error" TextWrapping="Wrap" Text="" Margin="0,10,0,0" Width="187" HorizontalAlignment="Center" Foreground="Red"/>
-        <Button Content="Добавить"  Click="ChooseAction_Click" Style="{StaticResource ButtonStyle}" Height="51" VerticalAlignment="Bottom" Margin="0,40,0,0"/>
-        <Button Content="Назад"  Click="Back_Click" Style="{StaticResource ButtonStyle}" Height="51" VerticalAlignment="Bottom" Margin="0,20,0,0"/>
-    </StackPanel>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock TextWrapping="Wrap" Text="Название" Margin="-240,50,0,0" HorizontalAlignment="Center"/>
+            <TextBox x:Name="Name" TextWrapping="Wrap" Text="" Width="300" Margin="0,10,0,0" Height="30" FontSize="20"/>
+            <TextBlock TextWrapping="Wrap" Text="Кол-во строений" Margin="-200,10,0,0" HorizontalAlignment="Center"/>
+            <TextBox x:Name="Buildings" TextWrapping="Wrap" Text="" Width="300" Margin="0,10,0,0" Height="30" FontSize="20"/>
+            <TextBlock x:Name="Error" TextWrapping="Wrap" Text="" Margin="0,10,0,0" Width="187" HorizontalAlignment="Center" Foreground="Red"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+            <Button Content="Добавить"  Click="ChooseAction_Click" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Назад"  Click="Back_Click" Style="{StaticResource ButtonStyle}"/>
+        </StackPanel>
+    </DockPanel>
 </Page>

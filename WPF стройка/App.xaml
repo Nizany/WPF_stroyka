@@ -4,12 +4,13 @@
              StartupUri="Windows/LoginWindow.xaml">
     <Application.Resources>
         <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
-            <Setter Property="Margin" Value="0,0,0,0"/>
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="10,5"/>
             <Style.Triggers>
                 <Trigger Property="IsChecked" Value="True">
@@ -21,7 +22,9 @@
             </Style.Triggers>
         </Style>
         <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Margin" Value="0,15,0,15"/>
             <Setter Property="Background" Value="#259044"/>
+            <Setter Property="Height" Value="51"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="20, 10"/>
@@ -45,7 +48,10 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Window">
-                        <Grid Background="White">
+                        <Grid>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Background.png"/>
+                            </Grid.Background>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
@@ -60,6 +66,7 @@
 
                             <!-- Основное содержимое окна -->
                             <ContentPresenter Grid.Row="1" />
+
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

@@ -28,10 +28,10 @@ namespace WPF_стройка.Windows
             {
                 Window.GetWindow(this).Content = new UpdateBuildingPage();
             }
-            if (Back.IsChecked == true)
-            {
-                Window.GetWindow(this).Content = new MainPage();
-            }
+        }
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Window.GetWindow(this).Content = new MainPage();
         }
     }
 }

@@ -6,12 +6,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage">
-    <StackPanel>
-        <RadioButton x:Name="Buildings" Content="Работа со строениями" Style="{StaticResource RadioButtonStyle}" Margin="10,20,0,0" />
-        <RadioButton x:Name="GroupBuildings" Content="Работа с группами строений" Style="{StaticResource RadioButtonStyle}" Margin="10,10,0,0" />
-        <RadioButton x:Name="Companies" Content="Работа с компаниями" Style="{StaticResource RadioButtonStyle}" Margin="10,10,0,0" />
-        <RadioButton x:Name="List" Content="Вывести список" Style="{StaticResource RadioButtonStyle}" Margin="10,10,0,0" />
-        <Button Content="Выбрать"  Click="ChooseAction_Click" Height="50.96" Style="{StaticResource ButtonStyle}" Margin="0,20,0,0"/>
-        <Button Content="Выйти из аккаунта"  Click="ExitAction_Click" Height="50" VerticalContentAlignment="Center" Style="{StaticResource ButtonStyle}" Margin="0,20,0,10"/>
-    </StackPanel>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <RadioButton x:Name="Buildings" Content="Работа со строениями" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton x:Name="GroupBuildings" Content="Работа с группами строений" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton x:Name="Companies" Content="Работа с компаниями" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton x:Name="List" Content="Вывести список" Style="{StaticResource RadioButtonStyle}" />
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+            <Button Content="Выбрать"  Click="ChooseAction_Click" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Выйти из аккаунта"  Click="ExitAction_Click" Style="{StaticResource ButtonStyle}"/>
+        </StackPanel>
+    </DockPanel>
 </Page>

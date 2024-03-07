@@ -5,23 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPF_стройка.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="499.49" d:DesignWidth="800"
       Title="AddBuildingPage">
-
-    <StackPanel>
-        <TextBlock TextWrapping="Wrap" Text="Название" Margin="-240,50,0,0" HorizontalAlignment="Center"/>
-        <TextBox x:Name="Name" TextWrapping="Wrap" Text="" Width="300" Margin="0,10,0,0" Height="30" FontSize="20"/>
-        <TextBlock TextWrapping="Wrap" Text="Кол-во этажей" Margin="-220,10,0,0" HorizontalAlignment="Center"/>
-        <TextBox x:Name="Floors" TextWrapping="Wrap" Text="" Width="300" Margin="0,10,0,0" Height="30" FontSize="20"/>
-        <TextBlock TextWrapping="Wrap" Text="Высота" Margin="-260,10,0,0" HorizontalAlignment="Center"/>
-        <TextBox x:Name="Height" TextWrapping="Wrap" Text="" Width="300" Margin="0,10,0,0" Height="30" FontSize="20"/>
-        <TextBlock TextWrapping="Wrap" Text="Жилой" Margin="250,10,0,0" Width="187"/>
-        <ComboBox x:Name="IsResidental" Width="120" Margin="180,10,0,0">
-            <ComboBoxItem Content="Да" />
-            <ComboBoxItem Content="Нет" /> 
-        </ComboBox>
-        <TextBlock x:Name="Error" TextWrapping="Wrap" Text="" Margin="0,10,0,0" Width="187" HorizontalAlignment="Center" Foreground="Red"/>
-        <Button Content="Добавить"  Click="ChooseAction_Click" Style="{StaticResource ButtonStyle}" Height="51" VerticalAlignment="Bottom" Margin="0,40,0,0"/>
-        <Button Content="Назад"  Click="Back_Click" Style="{StaticResource ButtonStyle}" Height="51" VerticalAlignment="Bottom" Margin="0,20,0,0"/>
-    </StackPanel>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock TextWrapping="Wrap" Text="Название" Margin="-245,50,0,0" HorizontalAlignment="Center"/>
+            <TextBox x:Name="Name" TextWrapping="Wrap" Text="" Width="300" Margin="0,10,0,0" Height="30" FontSize="20"/>
+            <TextBlock TextWrapping="Wrap" Text="Кол-во этажей" Margin="-220,10,0,0" HorizontalAlignment="Center"/>
+            <TextBox x:Name="Floors" TextWrapping="Wrap" Text="" Width="300" Margin="0,10,0,0" Height="30" FontSize="20"/>
+            <TextBlock TextWrapping="Wrap" Text="Высота строения (м)" Margin="-190,10,0,0" HorizontalAlignment="Center"/>
+            <TextBox x:Name="Height" TextWrapping="Wrap" Text="" Width="300" Margin="0,10,0,0" Height="30" FontSize="20"/>
+            <TextBlock TextWrapping="Wrap" Text="Жилой" Margin="250,10,0,0" Width="187"/>
+            <ComboBox x:Name="IsResidental" Width="120" Margin="180,10,0,0">
+                <ComboBoxItem Content="Да" />
+                <ComboBoxItem Content="Нет" />
+            </ComboBox>
+            <TextBlock x:Name="Error" TextWrapping="Wrap" Text="" Margin="0,10,0,0" Width="187" HorizontalAlignment="Center" Foreground="Red"/>
+        </StackPanel>
+        
+        <StackPanel VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
+            <Button Content="Добавить"  Click="ChooseAction_Click" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Назад"  Click="Back_Click" Style="{StaticResource ButtonStyle}"/>
+        </StackPanel>
+    </DockPanel>
 </Page>
