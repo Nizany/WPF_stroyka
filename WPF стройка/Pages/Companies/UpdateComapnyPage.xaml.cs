@@ -31,10 +31,10 @@ namespace WPF_стройка.Pages
                 Error.Text = ("Местоположение компнаии должно состоять только из букв, цифр и пробелов.");
                 return;
             }
-            var CompanyData = SqlConnect.CompaniesData();
+            var CompanyData = ListActions.CompaniesData();
             if (CompanyData.Any(item => item.Name == name))
             {
-                SqlConnect.UpdateCompany(name, location);
+                CompaniesActions.UpdateCompany(name, location);
                 Error.Text = "Компания обновлена";
             }
             else
@@ -56,7 +56,7 @@ namespace WPF_стройка.Pages
             }
             else
             {
-                var Company = SqlConnect.CompaniesData().FirstOrDefault(b => b.Name == Name.Text);
+                var Company = ListActions.CompaniesData().FirstOrDefault(b => b.Name == Name.Text);
                 if (Company != null)
                 {
                     Error.Text = string.Empty;

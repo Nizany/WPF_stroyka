@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Companies.cs" />
     <Compile Include="Pages\Buildings\UpdateBuildingPage.xaml.cs">
       <DependentUpon>UpdateBuildingPage.xaml</DependentUpon>
     </Compile>

@@ -25,14 +25,14 @@ namespace WPF_стройка.Pages
                 return;
             }
 
-            var CompanyData = SqlConnect.CompaniesData();
+            var CompanyData = ListActions.CompaniesData();
             if (CompanyData.Any(item => item.Name == name))
             {
                 Error.Text = ("Такая компания уже существует!");
             }
             else
             {
-                SqlConnect.AddCompany(name, Location.Text);
+                CompaniesActions.AddCompany(name, Location.Text);
                 Error.Text = "Компания добавлена";
             }
         }

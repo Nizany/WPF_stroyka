@@ -18,10 +18,10 @@ namespace WPF_стройка.Pages
         private void ChooseAction_Click(object sender, RoutedEventArgs e)
         {
             var name = Name.Text;
-            var CompanyData = SqlConnect.CompaniesData();
+            var CompanyData = ListActions.CompaniesData();
             if (CompanyData.Any(item => item.Name == name))
             {
-                SqlConnect.RemoveCompany(name);
+                CompaniesActions.RemoveCompany(name);
                 Error.Text = "Компания удалена";
             }
             else

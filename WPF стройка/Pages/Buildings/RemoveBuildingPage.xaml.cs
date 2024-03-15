@@ -18,10 +18,10 @@ namespace WPF_стройка.Pages
         private void ChooseAction_Click(object sender, RoutedEventArgs e)
         {
             var name = Name.Text;
-            var BuildData = SqlConnect.BuildingsData();
+            var BuildData = ListActions.BuildingsData();
             if (BuildData.Any(item => item.Name == name))
             {
-                SqlConnect.RemoveBuilding(name);
+                BuildingActions.RemoveBuilding(name);
                 Error.Text = "Строение удалено";
             }
             else

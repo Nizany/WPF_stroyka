@@ -18,9 +18,9 @@ namespace WPF_стройка.Pages
         private void ChooseAction_Click(object sender, RoutedEventArgs e)
         {
             var name = Name.Text;
-            if (SqlConnect.BuildingsGroupData().Any(item => item.Name == name))
+            if (ListActions.BuildingsGroupData().Any(item => item.Name == name))
             {
-                SqlConnect.RemoveGroupBuildings(name);
+                GroupBuildingActions.RemoveGroupBuildings(name);
                 Error.Text = "Группа строений удалена";
             }
             else

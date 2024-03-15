@@ -53,7 +53,7 @@ namespace WPF_стройка
             var loginInserted = LoginBox.Text;
             bool authenticationSuccessful = false;
 
-            foreach (var item in SqlConnect.UserDatas("Авторизация", "Login", loginInserted))
+            foreach (var item in ListActions.UserDatas("Авторизация", "Login", loginInserted))
             {
                 if (item.Login == loginInserted && item.Password == ConvertToUnsecureString(PassBox.SecurePassword))
                 {

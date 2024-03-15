@@ -48,13 +48,13 @@ namespace WPF_стройка.Pages
                     isResidential = 0;
                     break;
             }
-            if (SqlConnect.BuildingsData().Any(item => item.Name == name))
+            if (ListActions.BuildingsData().Any(item => item.Name == name))
             {
                 Error.Text = ("Такое строение уже существует!");
             }
             else
             {
-                SqlConnect.AddBuilding(name, int.Parse(floors), float.Parse(height), isResidential);
+                BuildingActions.AddBuilding(name, int.Parse(floors), float.Parse(height), isResidential);
                 Error.Text = "Строение добавлено";
             }
         }

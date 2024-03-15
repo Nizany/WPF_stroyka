@@ -48,10 +48,10 @@ namespace WPF_стройка.Pages
                     isResidential = 0;
                     break;
             }
-            var BuildData = SqlConnect.BuildingsData();
+            var BuildData = ListActions.BuildingsData();
             if (BuildData.Any(item => item.Name == name))
             {
-                SqlConnect.UpdateBuilding(name, int.Parse(floors), float.Parse(height), isResidential);
+                BuildingActions.UpdateBuilding(name, int.Parse(floors), float.Parse(height), isResidential);
                 Error.Text = "Строение обновлено";
             }
             else
@@ -73,7 +73,7 @@ namespace WPF_стройка.Pages
             }
             else
             {
-                var building = SqlConnect.BuildingsData().FirstOrDefault(b => b.Name == Name.Text);
+                var building = ListActions.BuildingsData().FirstOrDefault(b => b.Name == Name.Text);
                 if (building != null)
                 {
                     Error.Text = string.Empty;

@@ -45,14 +45,14 @@ namespace WPF_стройка
             }
             else
             {
-                if (SqlConnect.UserDatas("Авторизация", "Login", loginInserted).Any(item => item.Login == loginInserted))
+                if (ListActions.UserDatas("Авторизация", "Login", loginInserted).Any(item => item.Login == loginInserted))
                 {
                     WrongText.Text = "Пользователь с таким логином уже существует";
                     WrongText.Visibility = Visibility.Visible;
                 }
                 else if (passwordInserted1 == passwordInserted2)
                 {
-                    SqlConnect.RegisterUser(loginInserted, passwordInserted2);
+                    UserActions.RegisterUser(loginInserted, passwordInserted2);
                     new MainWindow().Show();
                     Close();
                 }

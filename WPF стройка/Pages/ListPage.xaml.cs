@@ -32,7 +32,7 @@ namespace WPF_стройка.Windows
         private void CompanyAction_Click(object sender, RoutedEventArgs e)
         {
             MyListView.View = new GridView();
-            MyListView.ItemsSource = SqlConnect.CompaniesData();
+            MyListView.ItemsSource = ListActions.CompaniesData();
 
             AddColumn("ID", "Id");
             AddColumn("Название", "Name");
@@ -42,7 +42,7 @@ namespace WPF_стройка.Windows
         private void GroupAction_Click(object sender, RoutedEventArgs e)
         {
             MyListView.View = new GridView();
-            MyListView.ItemsSource = SqlConnect.BuildingsGroupData();
+            MyListView.ItemsSource = ListActions.BuildingsGroupData();
 
             AddColumn("ID", "Id");
             AddColumn("Название", "Name");
@@ -52,7 +52,7 @@ namespace WPF_стройка.Windows
         private void BuildingAction_Click(object sender, RoutedEventArgs e)
         {
             MyListView.View = new GridView();
-            MyListView.ItemsSource = SqlConnect.BuildingsData();
+            MyListView.ItemsSource = ListActions.BuildingsData();
 
             AddColumn("ID", "Id");
             AddColumn("Название", "Name");

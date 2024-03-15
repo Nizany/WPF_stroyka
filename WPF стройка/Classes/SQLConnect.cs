@@ -3,30 +3,29 @@ using System.Data.SqlClient;
 
 namespace WPF_стройка
 {
-
-    public class SqlConnect
+    public abstract class DataAccess
     {
-        private static SqlConnection CreateConnection()
+        protected static SqlConnection CreateConnection()
         {
             var connection = new SqlConnection(Data.Connect_Data);
             connection.Open();
             return connection;
         }
-
-        private static int GetTableCount(string tableName, SqlConnection connection)
+        protected static int GetTableCount(string tableName, SqlConnection connection)
         {
             var sqlQuery = $"SELECT COUNT(ID) FROM {tableName}";
             var countCommand = new SqlCommand(sqlQuery, connection);
             return (int)countCommand.ExecuteScalar();
         }
-
-        private static void ExecuteNonQuery(string query, SqlConnection connection, params SqlParameter[] parameters)
+        protected static void ExecuteNonQuery(string query, SqlConnection connection, params SqlParameter[] parameters)
         {
             var command = new SqlCommand(query, connection);
             command.Parameters.AddRange(parameters);
             command.ExecuteNonQuery();
         }
-
+    }
+    public class UserActions : DataAccess
+    {
         public static void RegisterUser(string Login, string Password)
         {
             using (var connection = CreateConnection())
@@ -40,14 +39,18 @@ namespace WPF_стройка
                     new SqlParameter("@Password", Password));
             }
         }
-
+    }
+    public class BuildingActions : DataAccess
+    {
         public static void AddBuilding(string Name, int Floors, float Height, int isResidential)
         {
             using (var connection = CreateConnection())
             {
-                var count = GetTableCount("Строения", connection);
+                var tableName = "Строения";
+                var count = GetTableCount(tableName, connection);
 
-                ExecuteNonQuery("INSERT INTO Строения (ID, Название, [Кол-во этажей], Высота, Жилой) VALUES (@ID, @Название, @Кол_во_этажей, @Высота, @Жилой)",
+                ExecuteNonQuery($"INSERT INTO {tableName} (ID, Название, [Кол-во этажей], Высота, Жилой)" +
+                    $" VALUES (@ID, @Название, @Кол_во_этажей, @Высота, @Жилой)",
                                 connection,
                                 new SqlParameter("@ID", count + 1),
                                 new SqlParameter("@Название", Name),
@@ -77,7 +80,8 @@ namespace WPF_стройка
                                 new SqlParameter("@Жилой", isResidential));
             }
         }
-
+    }
+    public class GroupBuildingActions : DataAccess {
         public static void AddGroupBuilding(string Name, int buildings)
         {
             using (var connection = CreateConnection())
@@ -110,19 +114,25 @@ namespace WPF_стройка
                     new SqlParameter("@Кол_во_строений", buildings));
             }
         }
-
+    }
+    public class CompaniesActions : DataAccess
+    {
         public static void AddCompany(string Name, string location)
         {
             using (var connection = CreateConnection())
             {
                 var count = GetTableCount("Компании", connection);
 
-                ExecuteNonQuery("INSERT INTO Компании (ID, Название, Местоположение) VALUES (@ID, @Название, @Местоположение",
-                                connection,
-                                new SqlParameter("@ID", count + 1),
-                                new SqlParameter("@Название", Name),
-                                new SqlParameter("@Местоположение", location));
+                InsertCompanyData(connection, count, Name, location);
             }
+        }
+        private static void InsertCompanyData(SqlConnection connection, int count, string Name, string location)
+        {
+            ExecuteNonQuery("INSERT INTO Компании (ID, Название, Местоположение) VALUES (@ID, @Название, @Местоположение",
+                            connection,
+                            new SqlParameter("@ID", count + 1),
+                            new SqlParameter("@Название", Name),
+                            new SqlParameter("@Местоположение", location));
         }
         public static void RemoveCompany(string Name)
         {
@@ -134,8 +144,8 @@ namespace WPF_стройка
                 insertCommand.Parameters.AddWithValue("@Название", Name);
 
                 ExecuteNonQuery("DELETE FROM Компании WHERE Название = @Название",
-                                 connection,
-                                 new SqlParameter("@Название", Name));
+                                    connection,
+                                    new SqlParameter("@Название", Name));
             }
         }
         public static void UpdateCompany(string Name, string location)
@@ -149,13 +159,14 @@ namespace WPF_стройка
                 insertCommand.Parameters.AddWithValue("@Местоположение", location);
 
                 ExecuteNonQuery("UPDATE Компании SET Местоположение=@Местоположение WHERE Название=@Название",
-                    connection,
-                    new SqlParameter("@Название", Name),
-                    new SqlParameter("@Местоположение", location));
+                                connection,
+                                new SqlParameter("@Название", Name),
+                                new SqlParameter("@Местоположение", location));
             }
         }
-
-
+    }
+    public class ListActions : DataAccess
+    {
         public static List<Buildings> BuildingsData()
         {
             var connection = CreateConnection();
@@ -218,11 +229,11 @@ namespace WPF_стройка
                     while (reader.Read())
                     {
                         var data = new Companies
-                        {
-                            Id = reader["ID"].ToString(),
-                            Name = reader["Название"].ToString(),
-                            Location = reader["Местоположение"].ToString(),
-                        };
+                        (
+                            reader["ID"].ToString(),
+                            reader["Название"].ToString(),
+                            reader["Местоположение"].ToString()
+                        );
                         result.Add(data);
                     }
                 }
@@ -252,7 +263,6 @@ namespace WPF_стройка
             return result;
         }
     }
-
     public class Buildings
     {
         public string Id { get; set; }
@@ -266,12 +276,6 @@ namespace WPF_стройка
         public string Id { get; set; }
         public string Name { get; set; }
         public string NumberOfBuildings { get; set; }
-    }
-    public class Companies
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Location { get; set; }
     }
     public class UserData
     {

@@ -27,19 +27,19 @@ namespace WPF_стройка.Pages
                 Error.Text = ("Количество групп строений должно быть положительным целым числом.");
                 return;
             }
-            var BuildingGroupData = SqlConnect.BuildingsGroupData();
+            var BuildingGroupData = ListActions.BuildingsGroupData();
             if (BuildingGroupData.Any(item => item.Name == name))
             {
                 Error.Text = ("Такая группа строений уже существует!");
             }
             else
             {
-                SqlConnect.AddGroupBuilding(name, int.Parse(buildings));
+                GroupBuildingActions.AddGroupBuilding(name, int.Parse(buildings));
                 Error.Text = "Группа строений добавлена";
             }
             if (BuildingGroupData.Any(item => item.Name == name))
             {
-                SqlConnect.UpdateGroupBuildings(name, int.Parse(buildings));
+                GroupBuildingActions.UpdateGroupBuildings(name, int.Parse(buildings));
                 Error.Text = "Группа строений обновлена";
             }
             else
@@ -61,7 +61,7 @@ namespace WPF_стройка.Pages
             }
             else
             {
-                var buildingGroup = SqlConnect.BuildingsGroupData().FirstOrDefault(b => b.Name == Name.Text);
+                var buildingGroup = ListActions.BuildingsGroupData().FirstOrDefault(b => b.Name == Name.Text);
                 if (buildingGroup != null)
                 {
                     Error.Text = string.Empty;
